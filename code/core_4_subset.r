@@ -11,12 +11,16 @@ core_data <- read_csv("data/core_data.csv")
 
 # 2. Subset a variable ------------------------------------
   # two ways of subsetting a variable
+  # First, use $. Then, use []
 
-core_data$threat
+core_data
 
 core_data[,"threat"] 
   # within the square brackets, the first dimension refers to rows
   # and the second dimension refers to columns
+
+# 3. Subset a row ----------------------------------------
+core_data[31,]
 
 # 3. Subset a value ---------------------------------------
 
@@ -45,7 +49,9 @@ achievement_plot <-
   ) +
   labs(y = "Sense of Belonging", x = "Test Scores", color = "")
 
+# use $ first
+achievement_plot$labels
 
-achievement_plot
-
-achievement_plot[["data"]]
+# you can also use double square brackets and the 
+# name of the object you want to subset
+achievement_plot["labels"]
