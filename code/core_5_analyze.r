@@ -15,14 +15,14 @@ core_data <- read_csv("data/core_data.csv")
 # 2. Analysis ----------------------------------------------
 
 ## We will test the association between stereotype threat and sense of belonging at school,
-## controlling for whether students were Black or Latinx.
+## controlling for whether students identify as a minority or not.
 
 ## We will use a linear regression, lm(), which is one of the most common 
 ## analysis functions in R and analysis models in the real world.
 
 model_belonging <- # fit the model and store in object model_belonging. This is your "shopping cart"
   lm(
-    sb ~ 1 + threat + blk_ltn, # formula
+    sb ~ 1 + threat + minority, # formula
     core_data # data
   )
 
