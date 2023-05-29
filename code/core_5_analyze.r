@@ -44,3 +44,37 @@ ugly_table <-
 ugly_table %>% 
   flextable(.) # gives us a better-looking version of the table
 
+# 5. Clean your table --------------------------------------
+clean_table <- 
+  ugly_table %>% 
+  rename(
+    Predictor = term, 
+    Estimate = estimate,
+    SE = std.error,
+    t = statistic,
+    p = `p.value`
+  ) %>% 
+  modify_at( # modify existing variables
+    vars(Predictor), # choose the var to be modified
+    ~factor(., # tell R that Predictor is a categorical variable
+            levels = # determine the order of the rows in the table
+              c("(Intercept)",
+                "threat",
+                "minoritynon-minority"), 
+            labels = # change the values that are printed in the column (follow order above)
+              c("Intercept", 
+                "Stereotype threat",
+                "Non-Minority")
+    )
+  ) 
+
+
+clean_table %>% 
+  flextable(.) 
+
+# 6. Format your table -------------
+clean_table %>% 
+  flextable(.) %>% 
+  bg(i = 2, bg = "wheat") %>% 
+  align(j = 2:5, align = "center", part = "all")
+
