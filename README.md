@@ -30,3 +30,22 @@ Cleaning data in the {tidyverse} involves creating sequences of actions that, to
 
 ¿Quieres leer más? Empieza por [aquí](https://open.substack.com/pub/companero/p/ok-si-todo-es-un-objeto?r=28h1ld&utm_campaign=post&utm_medium=web).
 Y aquí está el [video que explica esta idea](https://youtu.be/MGoebbE-hBA).
+
+
+## 🇪🇸 Tus objetos son como una caja que puedes abrir, 🇺🇸 Your objects are like a box you can open
+
+Tus objetos en `R` son como una caja que puedes abrir y explorar. De hecho, muchas veces vas a querer usar algo que está dentro de tu objeto, más que el objeto mismo. Para ello, tienes que aprender a explorar tus objectos. 
+
+Your objects in `R` are like a box that you can open and explore, In fact, many times you wil want to use something inside your object, instead of the object itself. To do so, you need to learn how to subset your objects. 
+
+## 🇪🇸 Analizar datos resulta en una lista desordenada, 🇺🇸 Analyzing data results in a messy list
+
+Cada vez que corres un modelo terminas con una lista que tiene mucha información que NO necesitas. Para usar esta lista eficientemente, debes aprender a extraer la información que necesitas. 
+
+Every time you run a model, you end up with a list that contains a lot of information you DON'T need. To use the list efficiently, you need to learn how to subset the information that you need. 
+
+## 🇪🇸 Tu tabla es un conjunto de datos pequeño, 🇺🇸 Your table is a small data frame
+
+Una tabla tiene filas y columnas y se ve igual a un conunto de datos. Por lo tanto, puedes limpiarla usando las mismas funciones que usas para limpiar conjuntos de datos más grandes. 
+
+A table has rows and columns and looks like a data frame. Therefore, you can clean it using the same functions you use to clean larger data frames. 
