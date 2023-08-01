@@ -11,7 +11,7 @@ library(tidyverse)
 # data
 core_data <- read_csv("data/core_data.csv")
 
-# 2. Clean data ---------------------------------------------
+# 2. Create new variables ---------------------------------------------
 
 clean_data <- 
   core_data %>%
@@ -74,3 +74,18 @@ mean(clean_data$ach, na.rm = TRUE)
 
 table(clean_data$cases)
 table(clean_data$cases_2)
+
+# 3. Select variables and filter rows -------------------------
+## select variables sb, sb_scaled, sb_ach
+
+sense_of_belonging_df <- 
+  clean_data %>% 
+  select(starts_with("sb"))
+
+first_few_variables <- 
+  clean_data %>% 
+  select(sb:gender)
+
+achievement_df <- 
+  clean_data %>% 
+  select(contains("ach"))
