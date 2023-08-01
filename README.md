@@ -29,7 +29,7 @@ Limpiar datos en el {tidyverse} involucra crear secuencias de acciones que, junt
 Cleaning data in the {tidyverse} involves creating sequences of actions that, together, create a new object (your clean data).
 
 ¿Quieres leer más? Empieza por [aquí](https://open.substack.com/pub/companero/p/ok-si-todo-es-un-objeto?r=28h1ld&utm_campaign=post&utm_medium=web).
-Y aquí está el [video que explica esta idea](https://youtu.be/MGoebbE-hBA). Si necesitas más ejemplos, empieza por [este playlist] (https://www.youtube.com/playlist?list=PLUsthJqAoJuGeQzfg-DlGoWJ-AYcUMvn7)
+Y aquí está el [video que explica esta idea](https://youtu.be/MGoebbE-hBA). Si necesitas más ejemplos, empieza por [este playlist](https://www.youtube.com/playlist?list=PLUsthJqAoJuGeQzfg-DlGoWJ-AYcUMvn7)
 
 
 ## 🇪🇸 Tus objetos son como una caja que puedes abrir, 🇺🇸 Your objects are like a box you can open
