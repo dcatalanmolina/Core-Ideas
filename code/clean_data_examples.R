@@ -76,7 +76,7 @@ table(clean_data$cases)
 table(clean_data$cases_2)
 
 # 3. Select variables and filter rows -------------------------
-## select variables sb, sb_scaled, sb_ach
+## select variables ----
 
 sense_of_belonging_df <- 
   clean_data %>% 
@@ -89,3 +89,63 @@ first_few_variables <-
 achievement_df <- 
   clean_data %>% 
   select(contains("ach"))
+
+## filter rows ----
+### only engaged
+engaged_df <- 
+  core_data %>% 
+  filter(engaged == 1)
+
+# check the result
+table(engaged_df$engaged)
+
+### only average
+avg_df <- 
+  core_data %>% 
+  filter(standards == "Average")
+
+# check the result
+table(avg_df$standards)
+
+
+### not engaged
+not_engaged_df <- 
+  core_data %>% 
+  filter(engaged != 1)
+
+table(not_engaged_df$engaged)
+
+### not average
+not_avg_df <- 
+  core_data %>% 
+  filter(standards != "Average")
+
+table(not_avg_df$standards)
+
+### two conditions
+engaged_and_not_avg <- 
+  core_data %>% 
+  filter(engaged == 1 & standards != "Average")
+
+table(engaged_and_not_avg$engaged, 
+      engaged_and_not_avg$standards)
+
+### detect multiple values in a vector
+specific_values <- 
+  core_data %>% 
+  filter(stgy %in% c(3,4,5))
+
+table(specific_values$stgy)
+
+### detect a string
+non_minority_df <- 
+  core_data %>% 
+  filter(str_detect(minority, "non"))
+
+table(non_minority_df$minority)
+
+minority_df <- 
+  core_data %>% 
+  filter(!str_detect(minority, "non"))
+
+table(minority_df$minority)
