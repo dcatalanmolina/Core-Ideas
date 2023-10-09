@@ -149,3 +149,35 @@ minority_df <-
   filter(!str_detect(minority, "non"))
 
 table(minority_df$minority)
+
+# 4. Modify variables -----------------------------
+
+## modify variables that satisfy a condition
+clean_data %>% 
+  modify_if(
+    is.numeric,
+    ~.x*1000
+  )
+
+## only modify numeric variables whose mean is above zero
+clean_data %>% 
+  modify_if(
+    ~is.numeric(.x) && mean(.x, na.rm = T) > 0,
+    ~.x*1000
+  )
+
+# 5. Aggregate data -----------------------------------
+
+## one grouping variable
+core_data %>% 
+  group_by(minority) %>% 
+  summarise(
+    m_threat = mean(threat, na.rm = TRUE)
+  )
+
+## two grouping variables
+core_data %>% 
+  group_by(minority, gender) %>% 
+  summarise(
+    m_threat = mean(threat, na.rm = TRUE)
+  )
