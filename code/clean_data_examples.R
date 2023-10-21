@@ -152,11 +152,20 @@ table(minority_df$minority)
 
 # 4. Modify variables -----------------------------
 
+## modify a few variables
+core_data %>% 
+  modify_at(
+    .at = c("sb", "threat", "ach"),
+    ~.x*100
+  )
+
+
 ## modify variables that satisfy a condition
-clean_data %>% 
+core_data %>% 
+  select(sb, minority, gender) %>% 
   modify_if(
     is.numeric,
-    ~.x*1000
+    ~round(., 2)
   )
 
 ## only modify numeric variables whose mean is above zero
@@ -180,4 +189,60 @@ core_data %>%
   group_by(minority, gender) %>% 
   summarise(
     m_threat = mean(threat, na.rm = TRUE)
+  )
+
+# 6. Create average scores --------------------
+core_data %>% 
+  rowwise() %>% 
+  mutate(
+    m = mean(c(sb,ach), na.rm = TRUE)
+  )
+
+# new df with many items that start with the same sufix
+tibble(
+  item_1 = rnorm(10),
+  item_2 = rnorm(10),
+  item_3 = rnorm(10),
+  item_4 = rnorm(10),
+  item_5 = rnorm(10),
+  item_6 = rnorm(10)
+) %>% 
+  rowwise() %>% 
+  mutate(
+    m = mean(c_across(contains("item_")), na.rm = TRUE)
+  )
+
+# 7. Rename multiple variables ---------------
+new_df_to_rename <- 
+  tibble(
+    item_1 = rnorm(10),
+    item_2 = rnorm(10),
+    item_3 = rnorm(10),
+    item_4 = rnorm(10),
+    item_5 = rnorm(10),
+    item_6 = rnorm(10),
+    # adding two more variables with different names
+    other_var_1 = rnorm(10),
+    other_var_2 = rnorm(10)
+  ) 
+
+## add a prefix
+new_df_to_rename %>% 
+  rename_with(
+    ~paste("abc", .x, sep = "_"),
+    .cols = starts_with("item")
+  )
+
+## replace a string
+new_df_to_rename %>% 
+  rename_with(
+    ~str_replace(.x, "item", "question"),
+    .cols = starts_with("item")
+  )
+
+## remove a string
+new_df_to_rename %>% 
+  rename_with(
+    ~str_remove(.x, "_"),
+    .cols = starts_with("item")
   )
